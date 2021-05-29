@@ -3,7 +3,6 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Clients;
 
-
 use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiFacade;
 
 class Clients
