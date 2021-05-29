@@ -17,7 +17,7 @@ class LaravelHarvestApi
     {
         $this->client = new Client([
             // Base URI is used with relative requests
-            'base_uri' => config('harvest.base_uri')
+            'base_uri' => config('harvest.base_uri'),
         ]);
     }
 
