@@ -1,22 +1,23 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "actuallyconnor/laravel-harvest-api",
+    "description": "Laravel Harvest API",
     "keywords": [
-        ":vendor_name",
+        "ActuallyConnor",
         "laravel",
-        "package_slug"
+        "laravel-harvest-api"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/actuallyconnor/laravel-harvest-api",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Connor Smyth",
+            "email": "me@connorsmyth.com",
+            "homepage": "https://connorsmyth.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.4",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.37"
     },
@@ -30,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Actuallyconnor\\LaravelHarvestApi\\": "src",
+            "Actuallyconnor\\LaravelHarvestApi\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Actuallyconnor\\LaravelHarvestApi\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Actuallyconnor\\LaravelHarvestApi\\LaravelHarvestApiServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "LaravelHarvestApi": "Actuallyconnor\\LaravelHarvestApi\\LaravelHarvestApiFacade"
             }
         }
     },

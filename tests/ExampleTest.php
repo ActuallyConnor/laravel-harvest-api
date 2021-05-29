@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Actuallyconnor\LaravelHarvestApi\Tests;
 
 class ExampleTest extends TestCase
 {
