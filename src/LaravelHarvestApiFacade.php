@@ -11,6 +11,6 @@ class LaravelHarvestApiFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-harvest-api';
+        return LaravelHarvestApi::class;
     }
 }
