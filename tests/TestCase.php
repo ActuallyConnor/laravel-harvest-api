@@ -2,9 +2,9 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Tests;
 
+use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiServiceProvider;
 
 class TestCase extends Orchestra
 {
