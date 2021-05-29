@@ -1,9 +1,14 @@
 <?php
 
-namespace Actuallyconnor\LaravelHarvestApi\Controllers\Mock;
+namespace Actuallyconnor\LaravelHarvestApi\Http\Controllers;
 
-class HarvestController
+use Illuminate\Http\Response;
+
+class HarvestController extends Controller
 {
+    /**
+     * @return Response
+     */
     public function getClients()
     {
         $data = [

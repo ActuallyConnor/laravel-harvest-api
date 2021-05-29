@@ -17,11 +17,11 @@ class LaravelHarvestApi
     {
         $this->client = new Client([
             // Base URI is used with relative requests
-            'base_uri' => config('harvest.base_uri'),
+            'base_uri' => config('harvest-api.base_uri'),
             'headers' => [
-                'Authorization' => sprintf('Bearer %s', config('harvest.access_token')),
-                'Harvest-Account-Id' => config('harvest.account_id'),
-                'User-Agent' => config('harvest.user_agent'),
+                'Authorization' => sprintf('Bearer %s', config('harvest-api.access_token')),
+                'Harvest-Account-Id' => config('harvest-api.account_id'),
+                'User-Agent' => config('harvest-api.user_agent'),
             ],
         ]);
     }

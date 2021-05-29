@@ -18,9 +18,6 @@ class LaravelHarvestApiServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-harvest-api')
             ->hasConfigFile()
-            ->hasViews() // TODO: routes not showing up in php artisan route:list
-            ->hasRoutes('mock.php')
-//            ->hasMigration('create_laravel-harvest-api_table')
-            ->hasCommand(LaravelHarvestApiCommand::class);
+            ->hasRoutes('web'); // TODO: routes not showing up in php artisan route:list
     }
 }
