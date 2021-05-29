@@ -2,7 +2,6 @@
 
 namespace Actuallyconnor\LaravelHarvestApi;
 
-use Actuallyconnor\LaravelHarvestApi\Commands\LaravelHarvestApiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
