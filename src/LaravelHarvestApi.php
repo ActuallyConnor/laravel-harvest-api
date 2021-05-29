@@ -21,8 +21,8 @@ class LaravelHarvestApi
             'headers' => [
                 'Authorization' => sprintf('Bearer %s', config('harvest.access_token')),
                 'Harvest-Account-Id' => config('harvest.account_id'),
-                'User-Agent' => config('harvest.user_agent')
-            ]
+                'User-Agent' => config('harvest.user_agent'),
+            ],
         ]);
     }
 
