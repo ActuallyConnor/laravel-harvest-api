@@ -37,7 +37,7 @@ HARVEST_USER_AGENT={your-user-agent}
 Add service provider to `config/app.php`
 
 ```
-\ActuallyConnor\LaravelHarvestAPI\Providers\HarvestServiceProvider::class,
+\ActuallyConnor\LaravelHarvestApi\Providers\HarvestServiceProvider::class,
 ```
 
 ## Usage

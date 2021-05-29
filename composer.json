@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "spatie/laravel-package-tools": "^1.4.3",
+        "spatie/laravel-package-tools": "^1.9.0",
         "illuminate/contracts": "^8.37",
         "guzzlehttp/guzzle": "^7.0"
     },
@@ -28,17 +28,18 @@
         "orchestra/testbench": "^6.15",
         "phpunit/phpunit": "^9.3",
         "spatie/laravel-ray": "^1.9",
-        "vimeo/psalm": "^4.4"
+        "vimeo/psalm": "^4.4",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
-            "Actuallyconnor\\LaravelHarvestApi\\": "src",
-            "Actuallyconnor\\LaravelHarvestApi\\Database\\Factories\\": "database/factories"
+            "ActuallyConnor\\LaravelHarvestApi\\": "src",
+            "ActuallyConnor\\LaravelHarvestApi\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Actuallyconnor\\LaravelHarvestApi\\Tests\\": "tests"
+            "ActuallyConnor\\LaravelHarvestApi\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -52,10 +53,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Actuallyconnor\\LaravelHarvestApi\\LaravelHarvestApiServiceProvider"
+                "ActuallyConnor\\LaravelHarvestApi\\LaravelHarvestApiServiceProvider"
             ],
             "aliases": {
-                "LaravelHarvestApi": "Actuallyconnor\\LaravelHarvestApi\\LaravelHarvestApiFacade"
+                "LaravelHarvestApi": "ActuallyConnor\\LaravelHarvestApi\\LaravelHarvestApiFacade"
             }
         }
     },

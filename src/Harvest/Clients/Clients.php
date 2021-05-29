@@ -3,9 +3,14 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Clients;
 
-
 use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiFacade;
 
+/**
+ * Class Clients
+ * https://help.getharvest.com/api-v2/clients-api/clients/clients/
+ *
+ * @package Actuallyconnor\LaravelHarvestApi\Harvest\Clients
+ */
 class Clients
 {
     private $id = 0;

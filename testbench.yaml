@@ -1,2 +1,2 @@
 providers:
-  - Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiServiceProvider
+  - ActuallyConnor\LaravelHarvestApi\LaravelHarvestApiServiceProvider
