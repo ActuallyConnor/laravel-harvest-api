@@ -13,7 +13,7 @@ use GuzzleHttp\Exception\GuzzleException;
  *
  * @package Actuallyconnor\LaravelHarvestApi\Harvest\Clients
  */
-class Clients
+class ClientsApi
 {
     private $uri = 'clients';
 

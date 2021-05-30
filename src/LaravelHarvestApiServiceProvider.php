@@ -2,6 +2,7 @@
 
 namespace Actuallyconnor\LaravelHarvestApi;
 
+use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\ClientsApi;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +22,9 @@ class LaravelHarvestApiServiceProvider extends ServiceProvider
 
         App::bind('Harvest', function () {
             return new LaravelHarvestApi();
+        });
+        App::bind('Clients', function () {
+            return new ClientsApi();
         });
     }
 

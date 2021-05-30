@@ -2,7 +2,7 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature\Clients;
 
-use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Clients;
+use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\ClientsApi;
 use Actuallyconnor\LaravelHarvestApi\Http\Controllers\HarvestController;
 use Tests\TestCase;
 
@@ -14,13 +14,13 @@ class ClientsTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->clients = new Clients();
+        $this->clients = new ClientsApi();
         $this->harvestMock = new HarvestController();
     }
 
     public function testCreateClientsObject()
     {
-        $this->assertInstanceOf(Clients::class, $this->clients);
+        $this->assertInstanceOf(ClientsApi::class, $this->clients);
     }
 
     public function testGetClients()
