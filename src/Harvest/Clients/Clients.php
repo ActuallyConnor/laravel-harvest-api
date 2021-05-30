@@ -4,6 +4,8 @@
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Clients;
 
 use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiFacade;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class Clients
@@ -13,86 +15,13 @@ use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiFacade;
  */
 class Clients
 {
-    private $id = 0;
-    private $name = '';
-    private $is_active = false;
-    private $address = '';
-    private $statement_key = '';
-    private $currency = '';
-    private $created_at = '';
-    private $updated_at = '';
-
     private $uri = 'clients';
 
-    private $client;
+    private GuzzleClient $client;
 
     public function __construct()
     {
         $this->client = LaravelHarvestApiFacade::getBaseClient();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIsActive()
-    {
-        return $this->is_active;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatementKey()
-    {
-        return $this->statement_key;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
     }
 
     /**
@@ -102,11 +31,25 @@ class Clients
      * @param $per_page int The number of records to return per page. Can range between 1 and 100. (Default: 100)
      *
      * @return mixed
+     * @throws GuzzleException
      */
-    public function listAllClients($is_active, $updated_since, $page = 1, $per_page = 100)
+    public function listAllClients($is_active = true, $updated_since = 'today', $page = 1, $per_page = 100)
     {
-        $response = $this->client->request('GET', $this->uri);
+        $response = $this->client->get($this->uri, [
+            'is_active'     => $is_active,
+            'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
+            'page'          => $page,
+            'per_page'      => $per_page
+        ]);
 
-        return $response;
+        $data = json_decode($response->getBody());
+
+        $clients = array();
+
+        foreach ($data->clients as $client) {
+            $clients[] = new Client($client->id, $client->name, $client->is_active, $client->address, $client->statement_key, $client->currency, $client->created_at, $client->updated_at);
+        }
+
+        return $clients;
     }
 }

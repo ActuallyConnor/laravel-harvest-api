@@ -23,50 +23,21 @@ class ClientsTest extends TestCase
         $this->assertInstanceOf(Clients::class, $this->clients);
     }
 
-    public function testGetId()
-    {
-        $this->assertEquals(0, $this->clients->getId());
-    }
-
-    public function testGetName()
-    {
-        $this->assertEquals('', $this->clients->getName());
-    }
-
-    public function testGetIsActive()
-    {
-        $this->assertEquals(false, $this->clients->getIsActive());
-    }
-
-    public function testGetAddress()
-    {
-        $this->assertEquals('', $this->clients->getAddress());
-    }
-
-    public function testGetStatementKey()
-    {
-        $this->assertEquals('', $this->clients->getStatementKey());
-    }
-
-    public function testGetCurrency()
-    {
-        $this->assertEquals('', $this->clients->getStatementKey());
-    }
-
-    public function testGetCreatedAt()
-    {
-        $this->assertEquals('', $this->clients->getCreatedAt());
-    }
-
-    public function testGetUpdatedAt()
-    {
-        $this->assertEquals('', $this->clients->getUpdatedAt());
-    }
-
     public function testGetClients()
     {
         $clients = $this->clients->listAllClients(true, date('Y-m-d'));
-        $mockClients = $this->harvestMock->getClients();
-        $this->assertEquals($mockClients, $clients);
+        $client = $clients[0];
+
+        $response = $this->get('/harvest/clients');
+        $mockClients = json_decode($response->getContent())->clients;
+        $mockClient = $mockClients[0];
+
+        $this->assertEquals($mockClient->id, $client->getId());
+        $this->assertEquals($mockClient->name, $client->getName());
+        $this->assertEquals($mockClient->is_active, $client->getIsActive());
+        $this->assertEquals($mockClient->statement_key, $client->getStatementKey());
+        $this->assertEquals($mockClient->currency, $client->getCurrency());
+        $this->assertEquals($mockClient->created_at, $client->getCreatedAt());
+        $this->assertEquals($mockClient->updated_at, $client->getUpdatedAt());
     }
 }
