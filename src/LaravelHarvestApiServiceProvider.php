@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelHarvestApiServiceProvider extends ServiceProvider
 {
-
     /**
      * Register any application services.
      *
@@ -16,7 +15,8 @@ class LaravelHarvestApiServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/harvest.php', 'harvest'
+            __DIR__.'/../config/harvest.php',
+            'harvest'
         );
 
         App::bind('Harvest', function () {
@@ -36,6 +36,5 @@ class LaravelHarvestApiServiceProvider extends ServiceProvider
         ]);
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
     }
 }

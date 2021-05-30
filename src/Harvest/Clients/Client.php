@@ -3,7 +3,6 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Clients;
 
-
 class Client
 {
     private int $id;
@@ -29,14 +28,14 @@ class Client
      */
     public function __construct($id, $name, $is_active, $address, $statement_key, $currency, $created_at, $updated_at)
     {
-        $this->id            = $id;
-        $this->name          = $name;
-        $this->is_active     = $is_active;
-        $this->address       = $address;
+        $this->id = $id;
+        $this->name = $name;
+        $this->is_active = $is_active;
+        $this->address = $address;
         $this->statement_key = $statement_key;
-        $this->currency      = $currency;
-        $this->created_at    = $created_at;
-        $this->updated_at    = $updated_at;
+        $this->currency = $currency;
+        $this->created_at = $created_at;
+        $this->updated_at = $updated_at;
     }
 
     /**

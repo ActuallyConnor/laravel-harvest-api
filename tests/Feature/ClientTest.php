@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-
     private $client;
 
     public function setUp(): void
