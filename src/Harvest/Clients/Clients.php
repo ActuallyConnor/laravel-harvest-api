@@ -36,15 +36,15 @@ class Clients
     public function listAllClients($is_active = true, $updated_since = 'today', $page = 1, $per_page = 100)
     {
         $response = $this->client->get($this->uri, [
-            'is_active'     => $is_active,
+            'is_active' => $is_active,
             'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
-            'page'          => $page,
-            'per_page'      => $per_page
+            'page' => $page,
+            'per_page' => $per_page,
         ]);
 
         $data = json_decode($response->getBody());
 
-        $clients = array();
+        $clients = [];
 
         foreach ($data->clients as $client) {
             $clients[] = new Client($client->id, $client->name, $client->is_active, $client->address, $client->statement_key, $client->currency, $client->created_at, $client->updated_at);
