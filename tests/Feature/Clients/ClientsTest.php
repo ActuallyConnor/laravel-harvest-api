@@ -1,6 +1,6 @@
 <?php
 
-namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature;
+namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature\Clients;
 
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Clients;
 use Actuallyconnor\LaravelHarvestApi\Http\Controllers\HarvestController;
