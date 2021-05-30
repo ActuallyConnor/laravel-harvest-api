@@ -1,17 +1,21 @@
 <?php
 
-namespace Actuallyconnor\LaravelHarvestApi\Tests;
+namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature;
 
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Clients;
+use Actuallyconnor\LaravelHarvestApi\Http\Controllers\HarvestController;
+use Tests\TestCase;
 
 class ClientsTest extends TestCase
 {
     private $clients;
+    private $harvestMock;
 
     public function setUp(): void
     {
         parent::setUp();
         $this->clients = new Clients();
+        $this->harvestMock = new HarvestController();
     }
 
     public function testCreateClientsObject()
@@ -57,5 +61,12 @@ class ClientsTest extends TestCase
     public function testGetUpdatedAt()
     {
         $this->assertEquals('', $this->clients->getUpdatedAt());
+    }
+
+    public function testGetClients()
+    {
+        $clients = $this->clients->listAllClients(true, date('Y-m-d'));
+        $mockClients = $this->harvestMock->getClients();
+        $this->assertEquals($mockClients, $clients);
     }
 }

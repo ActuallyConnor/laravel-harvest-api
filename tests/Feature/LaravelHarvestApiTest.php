@@ -1,8 +1,9 @@
 <?php
 
-namespace Actuallyconnor\LaravelHarvestApi\Tests;
+namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature;
 
 use Actuallyconnor\LaravelHarvestApi\LaravelHarvestApiFacade;
+use Tests\TestCase;
 
 class LaravelHarvestApiTest extends TestCase
 {

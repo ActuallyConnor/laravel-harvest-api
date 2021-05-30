@@ -2,22 +2,40 @@
 
 namespace Actuallyconnor\LaravelHarvestApi;
 
-use Actuallyconnor\LaravelHarvestApi\Commands\LaravelHarvestApiCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\ServiceProvider;
 
-class LaravelHarvestApiServiceProvider extends PackageServiceProvider
+class LaravelHarvestApiServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-harvest-api')
-            ->hasConfigFile()
-            ->hasRoutes('web'); // TODO: routes not showing up in php artisan route:list
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/harvest.php', 'harvest'
+        );
+
+        App::bind('Harvest', function () {
+            return new LaravelHarvestApi();
+        });
+    }
+
+    /**
+     * Bootstrap any package services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/harvest.php' => config_path('harvest.php'),
+        ]);
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
     }
 }

@@ -100,9 +100,13 @@ class Clients
      * @param $updated_since string Only return clients that have been updated since the given date and time.
      * @param $page int The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @param $per_page int The number of records to return per page. Can range between 1 and 100. (Default: 100)
+     *
+     * @return mixed
      */
     public function listAllClients($is_active, $updated_since, $page = 1, $per_page = 100)
     {
         $response = $this->client->request('GET', $this->uri);
+
+        return $response;
     }
 }
