@@ -44,12 +44,6 @@ class ClientsApi
 
         $data = json_decode($response->getBody());
 
-        $clients = [];
-
-        foreach ($data->clients as $client) {
-            $clients[] = new Client($client->id, $client->name, $client->is_active, $client->address, $client->statement_key, $client->currency, $client->created_at, $client->updated_at);
-        }
-
-        return $clients;
+        return new Clients($data);
     }
 }
