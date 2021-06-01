@@ -16,7 +16,7 @@ class ClientsApiTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->clientsApi  = new ClientsApi();
+        $this->clientsApi = new ClientsApi();
         $this->harvestMock = new HarvestController();
     }
 

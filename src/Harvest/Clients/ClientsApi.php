@@ -36,10 +36,10 @@ class ClientsApi
     public function listAllClients($is_active = true, $updated_since = 'today', $page = 1, $per_page = 100)
     {
         $response = $this->client->get($this->uri, [
-            'is_active'     => $is_active,
+            'is_active' => $is_active,
             'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
-            'page'          => $page,
-            'per_page'      => $per_page,
+            'page' => $page,
+            'per_page' => $per_page,
         ]);
 
         $data = json_decode($response->getBody());
@@ -59,8 +59,16 @@ class ClientsApi
 
         $data = json_decode($response->getBody());
 
-        return new Client($data->id, $data->name, $data->is_active, $data->address, $data->statement_key,
-            $data->currency, $data->created_at, $data->updated_at);
+        return new Client(
+            $data->id,
+            $data->name,
+            $data->is_active,
+            $data->address,
+            $data->statement_key,
+            $data->currency,
+            $data->created_at,
+            $data->updated_at
+        );
     }
 
     /**
