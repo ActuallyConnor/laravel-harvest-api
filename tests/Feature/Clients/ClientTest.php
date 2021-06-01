@@ -15,6 +15,11 @@ class ClientTest extends TestCase
         $this->client = new Client(5735776, "123 Industries", true, "123 Main St.\r\nAnytown, LA 71223", 1234567890987654321, "EUR", "2017-06-26T21:02:12Z", "2017-06-26T21:34:11Z");
     }
 
+    public function test_instance_of_client()
+    {
+        $this->assertInstanceOf(Client::class, $this->client);
+    }
+
     public function test_get_id()
     {
         $this->assertEquals(5735776, $this->client->getId());
