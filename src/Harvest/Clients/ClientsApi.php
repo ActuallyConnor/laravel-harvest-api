@@ -47,9 +47,41 @@ class ClientsApi
         return new Clients($data);
     }
 
+    /**
+     * @param $clientId
+     *
+     * @return Client
+     * @throws GuzzleException
+     */
     public function retrieveClient($clientId)
     {
         $response = $this->client->get(sprintf("%s/%s", $this->uri, $clientId));
+
+        $data = json_decode($response->getBody());
+
+        return new Client($data->id, $data->name, $data->is_active, $data->address, $data->statement_key,
+            $data->currency, $data->created_at, $data->updated_at);
+    }
+
+    /**
+     * @param  string  $name
+     * @param  bool  $is_active
+     * @param  string  $address
+     * @param  string  $currency
+     *
+     * @return Client
+     * @throws GuzzleException
+     */
+    public function createClient($name, $is_active = true, $address = '123 Home St', $currency = 'USD')
+    {
+        $response = $this->client->post($this->uri, [
+            'body' => json_encode([
+                'name'      => $name,
+                'is_active' => $is_active,
+                'address'   => $address,
+                'currency'  => $currency
+            ])
+        ]);
 
         $data = json_decode($response->getBody());
 

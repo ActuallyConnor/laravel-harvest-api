@@ -11,3 +11,7 @@ Route::get('harvest/clients', function (Request $request) {
 Route::get('harvest/clients/{client_id}', function(Request $request, $client_id) {
     return (new HarvestController())->getClient($client_id);
 });
+
+Route::post('harvest/clients', function (Request $request) {
+    return (new HarvestController())->postClient($request);
+});

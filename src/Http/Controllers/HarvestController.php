@@ -10,15 +10,16 @@ class HarvestController extends Controller
 {
     /**
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return Response
      */
     public function getClients(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'is_active' => 'bool',
+            'is_active'     => 'bool',
             'updated_since' => 'string',
-            'page' => 'int',
-            'per_page' => 'int'
+            'page'          => 'int',
+            'per_page'      => 'int'
         ]);
 
         if ($validator->fails()) {
@@ -65,7 +66,11 @@ class HarvestController extends Controller
         return response(json_encode($data));
     }
 
-
+    /**
+     * @param $clientId
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
     public function getClient($clientId)
     {
         $data = (object) [
@@ -77,6 +82,41 @@ class HarvestController extends Controller
             "created_at"    => "2017-06-26T21:02:12Z",
             "updated_at"    => "2017-06-26T21:34:11Z",
             "currency"      => "EUR"
+        ];
+
+        return response(json_encode($data));
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function postClient(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'      => 'string',
+            'is_active' => 'bool',
+            'address'   => 'string',
+            'currency'  => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->getMessageBag(), 400);
+        }
+
+        $validated = $validator->validated();
+
+        $data = (object) [
+            "id"            => 5737336,
+            "name"          => $validated['name'],
+            "is_active"     => $validated['is_active'] ?: null,
+            "address"       => $validated['address'] ?: null,
+            "statement_key" => 1234567890987654321,
+            "created_at"    => "2017-06-26T21=>39=>35Z",
+            "updated_at"    => "2017-06-26T21=>39=>35Z",
+            "currency"      => $validated['currency'] ?: null
         ];
 
         return response(json_encode($data));
