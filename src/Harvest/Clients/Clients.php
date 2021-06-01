@@ -3,7 +3,6 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Clients;
 
-
 class Clients
 {
     private array $clients = [];
