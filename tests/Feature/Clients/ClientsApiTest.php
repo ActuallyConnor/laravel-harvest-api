@@ -64,7 +64,7 @@ class ClientsApiTest extends TestCase
             'name' => $name,
             'is_active' => true,
             'address' => '123 Home St',
-            'currency' => 'USD'
+            'currency' => 'USD',
         ]);
 
         $mockClient = json_decode($response->getContent());

@@ -87,16 +87,24 @@ class ClientsApi
     {
         $response = $this->client->post($this->uri, [
             'body' => json_encode([
-                'name'      => $name,
+                'name' => $name,
                 'is_active' => $is_active,
-                'address'   => $address,
-                'currency'  => $currency
-            ])
+                'address' => $address,
+                'currency' => $currency,
+            ]),
         ]);
 
         $data = json_decode($response->getBody());
 
-        return new Client($data->id, $data->name, $data->is_active, $data->address, $data->statement_key,
-            $data->currency, $data->created_at, $data->updated_at);
+        return new Client(
+            $data->id,
+            $data->name,
+            $data->is_active,
+            $data->address,
+            $data->statement_key,
+            $data->currency,
+            $data->created_at,
+            $data->updated_at
+        );
     }
 }
