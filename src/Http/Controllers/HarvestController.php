@@ -16,10 +16,10 @@ class HarvestController extends Controller
     public function getClients(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'is_active' => 'bool',
-            'updated_since' => 'string',
-            'page' => 'int',
-            'per_page' => 'int',
+            'is_active' => 'bool|nullable',
+            'updated_since' => 'string|nullable',
+            'page' => 'int|nullable',
+            'per_page' => 'int|nullable',
         ]);
 
         if ($validator->fails()) {
@@ -97,9 +97,9 @@ class HarvestController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'is_active' => 'bool',
-            'address' => 'string',
-            'currency' => 'string',
+            'is_active' => 'bool|nullable',
+            'address' => 'string|nullable',
+            'currency' => 'string|nullable',
         ]);
 
         if ($validator->fails()) {

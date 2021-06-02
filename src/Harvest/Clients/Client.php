@@ -7,10 +7,10 @@ class Client
 {
     private int $id;
     private string $name;
-    private bool $is_active;
-    private string $address;
+    private $is_active;
+    private $address;
     private int $statement_key;
-    private string $currency;
+    private $currency;
     private string $created_at;
     private string $updated_at;
 

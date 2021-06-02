@@ -33,13 +33,13 @@ class ClientsApi
      * @return mixed
      * @throws GuzzleException
      */
-    public function listAllClients($is_active = true, $updated_since = 'today', $page = 1, $per_page = 100)
+    public function listAllClients($is_active, $updated_since, $page, $per_page)
     {
         $response = $this->client->get($this->uri, [
-            'is_active' => $is_active,
+            'is_active'     => $is_active,
             'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
-            'page' => $page,
-            'per_page' => $per_page,
+            'page'          => $page,
+            'per_page'      => $per_page,
         ]);
 
         $data = json_decode($response->getBody());
@@ -76,21 +76,21 @@ class ClientsApi
      * https://help.getharvest.com/api-v2/introduction/overview/supported-currencies/
      *
      * @param  string  $name  A textual description of the client.
-     * @param  bool  $is_active  Whether the client is active, or archived. Defaults to true.
-     * @param  string  $address  A textual representation of the client’s physical address. May include new line characters.
-     * @param  string  $currency  The currency used by the client. If not provided, the company’s currency will be used.
+     * @param  mixed  $is_active  Whether the client is active, or archived. Defaults to true.
+     * @param  mixed  $address  A textual representation of the client’s physical address. May include new line characters.
+     * @param  mixed  $currency  The currency used by the client. If not provided, the company’s currency will be used.
      *
      * @return Client
      * @throws GuzzleException
      */
-    public function createClient(string $name, bool $is_active, string $address, string $currency)
+    public function createClient(string $name, $is_active, $address, $currency)
     {
         $response = $this->client->post($this->uri, [
             'body' => json_encode([
-                'name' => $name,
+                'name'      => $name,
                 'is_active' => $is_active,
-                'address' => $address,
-                'currency' => $currency,
+                'address'   => $address,
+                'currency'  => $currency,
             ]),
         ]);
 
@@ -108,8 +108,29 @@ class ClientsApi
         );
     }
 
-    public function updateClient($clientId, $name, $is_active = true, $address = '123 Home St', $currency = 'USD')
+    // TODO: add tests for this, HarvestController
+    public function updateClient($clientId, $name, $is_active, $address, $currency)
     {
-        $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId));
+        $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId), [
+            'body' => json_encode([
+                'name'      => $name,
+                'is_active' => $is_active,
+                'address'   => $address,
+                'currency'  => $currency,
+            ]),
+        ]);
+
+        $data = json_decode($response->getBody());
+
+        return new Client(
+            $data->id,
+            $data->name,
+            $data->is_active,
+            $data->address,
+            $data->statement_key,
+            $data->currency,
+            $data->created_at,
+            $data->updated_at
+        );
     }
 }

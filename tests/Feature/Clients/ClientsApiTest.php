@@ -27,7 +27,7 @@ class ClientsApiTest extends TestCase
 
     public function test_get_clients()
     {
-        $clients = $this->clientsApi->listAllClients(true, date('Y-m-d'));
+        $clients = $this->clientsApi->listAllClients(true, date('Y-m-d'), 1, 100);
         $this->assertInstanceOf(Clients::class, $clients);
 
         $client = $clients->getClients()[0];
@@ -72,12 +72,17 @@ class ClientsApiTest extends TestCase
         $this->test_mock_client_aginst_real($mockClient, $client);
     }
 
+    public function test_post_client_null_optional_values()
+    {
+        $name = 'Test Client Name';
+
+        $client = $this->clientsApi->createClient($name, null, null, null);
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
     private function test_mock_client_aginst_real($mockClient, $client)
     {
-        $this->assertEquals(
-            $mockClient->id,
-            $client->getId()
-        );
+        $this->assertEquals($mockClient->id, $client->getId());
         $this->assertEquals($mockClient->name, $client->getName());
         $this->assertEquals($mockClient->is_active, $client->getIsActive());
         $this->assertEquals($mockClient->statement_key, $client->getStatementKey());
