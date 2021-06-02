@@ -5,7 +5,7 @@ namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature\Clients;
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Client;
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Clients;
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\ClientsApi;
-use Actuallyconnor\LaravelHarvestApi\Http\Controllers\HarvestController;
+use Actuallyconnor\LaravelHarvestApi\Http\Controllers\HarvestClientsController;
 use Tests\TestCase;
 
 class ClientsApiTest extends TestCase
@@ -17,7 +17,7 @@ class ClientsApiTest extends TestCase
     {
         parent::setUp();
         $this->clientsApi = new ClientsApi();
-        $this->harvestMock = new HarvestController();
+        $this->harvestMock = new HarvestClientsController();
     }
 
     public function test_create_clients_object()

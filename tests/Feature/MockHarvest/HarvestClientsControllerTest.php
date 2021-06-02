@@ -4,7 +4,7 @@ namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature\MockHarvest;
 
 use Tests\TestCase;
 
-class HarvestControllerTest extends TestCase
+class HarvestClientsControllerTest extends TestCase
 {
     public function test_get_clients()
     {

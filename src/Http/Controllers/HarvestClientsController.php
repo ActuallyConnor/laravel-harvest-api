@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class HarvestController extends Controller
+class HarvestClientsController extends Controller
 {
     /**
      * @param  \Illuminate\Http\Request  $request
