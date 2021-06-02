@@ -75,15 +75,15 @@ class ClientsApi
      * See a list of supported currencies
      * https://help.getharvest.com/api-v2/introduction/overview/supported-currencies/
      *
-     * @param  string  $name A textual description of the client.
-     * @param  bool  $is_active Whether the client is active, or archived. Defaults to true.
-     * @param  string  $address A textual representation of the client’s physical address. May include new line characters.
-     * @param  string  $currency The currency used by the client. If not provided, the company’s currency will be used.
+     * @param  string  $name  A textual description of the client.
+     * @param  bool  $is_active  Whether the client is active, or archived. Defaults to true.
+     * @param  string  $address  A textual representation of the client’s physical address. May include new line characters.
+     * @param  string  $currency  The currency used by the client. If not provided, the company’s currency will be used.
      *
      * @return Client
      * @throws GuzzleException
      */
-    public function createClient($name, $is_active = true, $address = '123 Home St', $currency = 'USD')
+    public function createClient(string $name, bool $is_active, string $address, string $currency)
     {
         $response = $this->client->post($this->uri, [
             'body' => json_encode([
@@ -106,5 +106,10 @@ class ClientsApi
             $data->created_at,
             $data->updated_at
         );
+    }
+
+    public function updateClient($clientId, $name, $is_active = true, $address = '123 Home St', $currency = 'USD')
+    {
+        $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId));
     }
 }

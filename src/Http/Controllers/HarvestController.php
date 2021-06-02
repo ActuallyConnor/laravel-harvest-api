@@ -96,7 +96,7 @@ class HarvestController extends Controller
     public function postClient(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'string',
+            'name' => 'required|string',
             'is_active' => 'bool',
             'address' => 'string',
             'currency' => 'string',

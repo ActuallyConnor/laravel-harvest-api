@@ -56,7 +56,7 @@ class ClientsApiTest extends TestCase
     {
         $name = 'Test Client Name';
 
-        $client = $this->clientsApi->createClient($name);
+        $client = $this->clientsApi->createClient($name, true, '123 Home St', 'USD');
 
         $this->assertInstanceOf(Client::class, $client);
 
