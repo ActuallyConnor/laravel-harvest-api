@@ -61,16 +61,23 @@ class ClientsApiTest extends TestCase
         $this->assertInstanceOf(Client::class, $client);
 
         $response = $this->post('/harvest/clients', [
-            'name' => $name
+            'name' => $name,
+            'is_active' => true,
+            'address' => '123 Home St',
+            'currency' => 'USD'
         ]);
+
         $mockClient = json_decode($response->getContent());
 
-        $this->test_mock_client_aginst_real($mockClient, $client); // TODO: ErrorException : Trying to get property 'id' of non-object
+        $this->test_mock_client_aginst_real($mockClient, $client);
     }
 
     private function test_mock_client_aginst_real($mockClient, $client)
     {
-        $this->assertEquals($mockClient->id, $client->getId());
+        $this->assertEquals(
+            $mockClient->id,
+            $client->getId()
+        );
         $this->assertEquals($mockClient->name, $client->getName());
         $this->assertEquals($mockClient->is_active, $client->getIsActive());
         $this->assertEquals($mockClient->statement_key, $client->getStatementKey());

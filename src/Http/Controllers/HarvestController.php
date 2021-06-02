@@ -111,12 +111,12 @@ class HarvestController extends Controller
         $data = (object) [
             "id"            => 5737336,
             "name"          => $validated['name'],
-            "is_active"     => $validated['is_active'] ?: null,
-            "address"       => $validated['address'] ?: null,
+            "is_active"     => !empty($validated['is_active']) ? $validated['is_active'] : null,
+            "address"       => !empty($validated['address']) ? $validated['address'] : null,
             "statement_key" => 1234567890987654321,
             "created_at"    => "2017-06-26T21=>39=>35Z",
             "updated_at"    => "2017-06-26T21=>39=>35Z",
-            "currency"      => $validated['currency'] ?: null
+            "currency"      => !empty($validated['currency']) ? $validated['currency'] : null
         ];
 
         return response(json_encode($data));
