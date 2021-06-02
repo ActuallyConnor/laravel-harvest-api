@@ -9,10 +9,10 @@ class HarvestControllerTest extends TestCase
     public function test_get_clients()
     {
         $response = $this->get('/harvest/clients', [
-            'is_active'     => true,
+            'is_active' => true,
             'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime('today')), // 2017-06-26T21:01:52Z
-            'page'          => 1,
-            'per_page'      => 100,
+            'page' => 1,
+            'per_page' => 100,
         ]);
         $response->assertStatus(200);
     }
@@ -34,10 +34,10 @@ class HarvestControllerTest extends TestCase
         $name = 'Test Client Name';
 
         $response = $this->post('/harvest/clients', [
-            'name'      => $name,
+            'name' => $name,
             'is_active' => true,
-            'address'   => '123 Home St',
-            'currency'  => 'USD',
+            'address' => '123 Home St',
+            'currency' => 'USD',
         ]);
 
         $response->assertStatus(201);
@@ -66,10 +66,10 @@ class HarvestControllerTest extends TestCase
         $name = 'Test Client Name';
 
         $response = $this->patch('/harvest/clients/123', [
-            'name'      => $name,
+            'name' => $name,
             'is_active' => true,
-            'address'   => '123 Home St',
-            'currency'  => 'USD',
+            'address' => '123 Home St',
+            'currency' => 'USD',
         ]);
 
         $response->assertStatus(200);
