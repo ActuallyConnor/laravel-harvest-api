@@ -36,10 +36,10 @@ class ClientsApi
     public function listAllClients($is_active, $updated_since, $page, $per_page)
     {
         $response = $this->client->get($this->uri, [
-            'is_active' => $is_active,
+            'is_active'     => $is_active,
             'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
-            'page' => $page,
-            'per_page' => $per_page,
+            'page'          => $page,
+            'per_page'      => $per_page,
         ]);
 
         $data = json_decode($response->getBody());
@@ -87,10 +87,10 @@ class ClientsApi
     {
         $response = $this->client->post($this->uri, [
             'body' => json_encode([
-                'name' => $name,
+                'name'      => $name,
                 'is_active' => $is_active,
-                'address' => $address,
-                'currency' => $currency,
+                'address'   => $address,
+                'currency'  => $currency,
             ]),
         ]);
 
@@ -108,14 +108,27 @@ class ClientsApi
         );
     }
 
+    /**
+     * See a list of supported currencies
+     * https://help.getharvest.com/api-v2/introduction/overview/supported-currencies/
+     *
+     * @param  int  $clientId  The client ID
+     * @param  string  $name  A textual description of the client.
+     * @param  mixed  $is_active  Whether the client is active, or archived. Defaults to true.
+     * @param  mixed  $address  A textual representation of the client’s physical address. May include new line characters.
+     * @param  mixed  $currency  The currency used by the client. If not provided, the company’s currency will be used.
+     *
+     * @return Client
+     * @throws GuzzleException
+     */
     public function updateClient($clientId, $name, $is_active, $address, $currency)
     {
         $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId), [
             'body' => json_encode([
-                'name' => $name,
+                'name'      => $name,
                 'is_active' => $is_active,
-                'address' => $address,
-                'currency' => $currency,
+                'address'   => $address,
+                'currency'  => $currency,
             ]),
         ]);
 
@@ -131,5 +144,18 @@ class ClientsApi
             $data->created_at,
             $data->updated_at
         );
+    }
+
+    /**
+     * @param  int  $clientId  The client ID
+     *
+     * @return bool
+     * @throws GuzzleException
+     */
+    public function deleteClient($clientId)
+    {
+        $response = $this->client->delete(sprintf("%s/%s", $this->uri, $clientId));
+
+        return $response->getStatusCode() == 200;
     }
 }

@@ -100,6 +100,19 @@ class ClientsApiTest extends TestCase
         $this->test_mock_client_against_real($mockClient, $client);
     }
 
+    public function test_update_client_null_optional_values()
+    {
+        $client = $this->clientsApi->updateClient(123, null, null, null, null);
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function test_delete_client()
+    {
+        $status = $this->clientsApi->deleteClient(123);
+
+        $this->assertTrue($status);
+    }
+
     private function test_mock_client_against_real($mockClient, $client)
     {
         $this->assertEquals($mockClient->id, $client->getId());

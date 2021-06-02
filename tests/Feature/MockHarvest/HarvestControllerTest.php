@@ -40,7 +40,7 @@ class HarvestControllerTest extends TestCase
             'currency'  => 'USD',
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function test_post_client_required_only()
@@ -51,7 +51,7 @@ class HarvestControllerTest extends TestCase
             'name' => $name,
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function test_post_client_missing_name()
@@ -79,6 +79,12 @@ class HarvestControllerTest extends TestCase
     {
         $response = $this->patch('/harvest/clients/123', []);
 
+        $response->assertStatus(200);
+    }
+
+    public function test_delete_client()
+    {
+        $response = $this->delete('/harvest/clients/123');
         $response->assertStatus(200);
     }
 }

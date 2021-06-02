@@ -19,3 +19,7 @@ Route::post('harvest/clients', function (Request $request) {
 Route::patch('harvest/clients/{client_id}', function (Request $request, $client_id) {
     return (new HarvestController())->updateClient($request, $client_id);
 });
+
+Route::delete('harvest/clients/{client_id}', function ($client_id) {
+    return (new HarvestController())->deleteClient($client_id);
+});

@@ -119,7 +119,7 @@ class HarvestController extends Controller
             "currency" => ! empty($validated['currency']) ? $validated['currency'] : null,
         ];
 
-        return response(json_encode($data));
+        return response(json_encode($data), 201);
     }
 
     /**
@@ -128,7 +128,7 @@ class HarvestController extends Controller
      * @return Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function updateClient(Request $request, $client_id)
+    public function updateClient(Request $request, $clientId)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'string|nullable',
@@ -155,5 +155,10 @@ class HarvestController extends Controller
         ];
 
         return response(json_encode($data));
+    }
+
+    public function deleteClient($clientId)
+    {
+        return response('Client deleted', 200);
     }
 }
