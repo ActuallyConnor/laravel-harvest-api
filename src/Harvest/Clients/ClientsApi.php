@@ -108,7 +108,6 @@ class ClientsApi
         );
     }
 
-    // TODO: add tests for this, HarvestController
     public function updateClient($clientId, $name, $is_active, $address, $currency)
     {
         $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId), [

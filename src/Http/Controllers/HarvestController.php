@@ -121,4 +121,39 @@ class HarvestController extends Controller
 
         return response(json_encode($data));
     }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updateClient(Request $request, $client_id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|nullable',
+            'is_active' => 'bool|nullable',
+            'address' => 'string|nullable',
+            'currency' => 'string|nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->getMessageBag(), 400);
+        }
+
+        $validated = $validator->validated();
+
+        $data = (object) [
+            "id" => 5737336,
+            "name" => ! empty($validated['name']) ? $validated['name'] : "Your New Client",
+            "is_active" => ! empty($validated['is_active']) ? $validated['is_active'] : false,
+            "address" => ! empty($validated['address']) ? $validated['address'] : null,
+            "statement_key" => 1234567890987654321,
+            "created_at" => "2017-06-26T21=>39=>35Z",
+            "updated_at" => "2017-06-26T21=>39=>35Z",
+            "currency" => ! empty($validated['currency']) ? $validated['currency'] : 'EUR',
+        ];
+
+        return response(json_encode($data));
+    }
 }
