@@ -72,10 +72,13 @@ class ClientsApi
     }
 
     /**
-     * @param  string  $name
-     * @param  bool  $is_active
-     * @param  string  $address
-     * @param  string  $currency
+     * See a list of supported currencies
+     * https://help.getharvest.com/api-v2/introduction/overview/supported-currencies/
+     *
+     * @param  string  $name A textual description of the client.
+     * @param  bool  $is_active Whether the client is active, or archived. Defaults to true.
+     * @param  string  $address A textual representation of the client’s physical address. May include new line characters.
+     * @param  string  $currency The currency used by the client. If not provided, the company’s currency will be used.
      *
      * @return Client
      * @throws GuzzleException
