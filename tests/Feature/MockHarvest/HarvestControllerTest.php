@@ -48,7 +48,7 @@ class HarvestControllerTest extends TestCase
         $name = 'Test Client Name';
 
         $response = $this->post('/harvest/clients', [
-            'name' => $name
+            'name' => $name,
         ]);
 
         $response->assertStatus(200);
