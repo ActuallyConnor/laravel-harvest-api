@@ -3,6 +3,7 @@
 namespace Actuallyconnor\LaravelHarvestApi;
 
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\ClientsApi;
+use Actuallyconnor\LaravelHarvestApi\Harvest\Invoices\InvoicesApi;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +26,9 @@ class LaravelHarvestApiServiceProvider extends ServiceProvider
         });
         App::bind('Clients', function () {
             return new ClientsApi();
+        });
+        App::bind('Invoices', function () {
+            return new InvoicesApi();
         });
     }
 

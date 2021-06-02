@@ -2,13 +2,13 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest;
 
-use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\ClientsApi;
+use Actuallyconnor\LaravelHarvestApi\Harvest\Invoices\InvoicesApi;
 use Illuminate\Support\Facades\Facade;
 
-class ClientsFacade extends Facade
+class InvoicesFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return ClientsApi::class;
+        return InvoicesApi::class;
     }
 }

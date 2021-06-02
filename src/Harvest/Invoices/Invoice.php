@@ -4,6 +4,11 @@ namespace Actuallyconnor\LaravelHarvestApi\Harvest\Invoices;
 
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Client;
 
+/**
+ * TODO: add tests and fill out the rest of this object
+ * Class Invoice
+ * @package Actuallyconnor\LaravelHarvestApi\Harvest\Invoices
+ */
 class Invoice
 {
     private int $id;
