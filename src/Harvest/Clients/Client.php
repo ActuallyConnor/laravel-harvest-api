@@ -21,14 +21,14 @@ class Client
      */
     public function __construct($client)
     {
-        $this->id            = isset($client->id) ? $client->id : $client->client;
-        $this->name          = $client->name;
-        $this->is_active     = isset($client->is_active) ? $client->is_active : null;
-        $this->address       = isset($client->address) ? $client->address : null;
+        $this->id = isset($client->id) ? $client->id : $client->client;
+        $this->name = $client->name;
+        $this->is_active = isset($client->is_active) ? $client->is_active : null;
+        $this->address = isset($client->address) ? $client->address : null;
         $this->statement_key = isset($client->statement_key) ? $client->statement_key : null;
-        $this->currency      = isset($client->currency) ? $client->currency : null;
-        $this->created_at    = isset($client->created_at) ? $client->created_at : null;
-        $this->updated_at    = isset($client->updated_at) ? $client->updated_at : null;
+        $this->currency = isset($client->currency) ? $client->currency : null;
+        $this->created_at = isset($client->created_at) ? $client->created_at : null;
+        $this->updated_at = isset($client->updated_at) ? $client->updated_at : null;
     }
 
     /**

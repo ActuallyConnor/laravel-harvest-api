@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class InvoiceTest extends TestCase
 {
-
     private Invoice $invoice;
 
     public function setUp(): void
@@ -15,7 +14,7 @@ class InvoiceTest extends TestCase
         parent::setUp();
 
         $response = $this->get('/harvest/invoices/123');
-        $invoice     = json_decode($response->getContent());
+        $invoice = json_decode($response->getContent());
 
         $this->invoice = new Invoice($invoice);
     }

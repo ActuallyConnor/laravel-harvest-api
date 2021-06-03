@@ -20,7 +20,7 @@ class ClientTest extends TestCase
             'statement_key' => 1234567890987654321,
             'currency' => "EUR",
             'created_at' => "2017-06-26T21:02:12Z",
-            'updated_at' => "2017-06-26T21:34:11Z"
+            'updated_at' => "2017-06-26T21:34:11Z",
         ];
         $this->client = new Client($data);
     }

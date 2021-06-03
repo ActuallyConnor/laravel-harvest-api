@@ -33,7 +33,6 @@ class Estimate
 
     public function __construct()
     {
-
     }
 
     /**
