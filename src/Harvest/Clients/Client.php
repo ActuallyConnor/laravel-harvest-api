@@ -9,33 +9,26 @@ class Client
     private string $name;
     private $is_active;
     private $address;
-    private int $statement_key;
+    private $statement_key;
     private $currency;
-    private string $created_at;
-    private string $updated_at;
+    private $created_at;
+    private $updated_at;
 
     /**
      * Client constructor.
      *
-     * @param $id
-     * @param $name
-     * @param $is_active
-     * @param $address
-     * @param $statement_key
-     * @param $currency
-     * @param $created_at
-     * @param $updated_at
+     * @param $client
      */
-    public function __construct($id, $name, $is_active, $address, $statement_key, $currency, $created_at, $updated_at)
+    public function __construct($client)
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->is_active = $is_active;
-        $this->address = $address;
-        $this->statement_key = $statement_key;
-        $this->currency = $currency;
-        $this->created_at = $created_at;
-        $this->updated_at = $updated_at;
+        $this->id            = isset($client->id) ? $client->id : $client->client;
+        $this->name          = $client->name;
+        $this->is_active     = isset($client->is_active) ? $client->is_active : null;
+        $this->address       = isset($client->address) ? $client->address : null;
+        $this->statement_key = isset($client->statement_key) ? $client->statement_key : null;
+        $this->currency      = isset($client->currency) ? $client->currency : null;
+        $this->created_at    = isset($client->created_at) ? $client->created_at : null;
+        $this->updated_at    = isset($client->updated_at) ? $client->updated_at : null;
     }
 
     /**

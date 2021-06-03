@@ -12,7 +12,17 @@ class ClientTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->client = new Client(5735776, "123 Industries", true, "123 Main St.\r\nAnytown, LA 71223", 1234567890987654321, "EUR", "2017-06-26T21:02:12Z", "2017-06-26T21:34:11Z");
+        $data = (object) [
+            'client' => 5735776,
+            'name' => "123 Industries",
+            'is_active' => true,
+            'address' => "123 Main St.\r\nAnytown, LA 71223",
+            'statement_key' => 1234567890987654321,
+            'currency' => "EUR",
+            'created_at' => "2017-06-26T21:02:12Z",
+            'updated_at' => "2017-06-26T21:34:11Z"
+        ];
+        $this->client = new Client($data);
     }
 
     public function test_instance_of_client()

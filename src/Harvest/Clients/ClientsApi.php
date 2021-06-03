@@ -57,18 +57,9 @@ class ClientsApi
     {
         $response = $this->client->get(sprintf("%s/%s", $this->uri, $clientId));
 
-        $data = json_decode($response->getBody());
+        $client = json_decode($response->getBody());
 
-        return new Client(
-            $data->id,
-            $data->name,
-            $data->is_active,
-            $data->address,
-            $data->statement_key,
-            $data->currency,
-            $data->created_at,
-            $data->updated_at
-        );
+        return new Client($client);
     }
 
     /**
@@ -94,18 +85,9 @@ class ClientsApi
             ]),
         ]);
 
-        $data = json_decode($response->getBody());
+        $client = json_decode($response->getBody());
 
-        return new Client(
-            $data->id,
-            $data->name,
-            $data->is_active,
-            $data->address,
-            $data->statement_key,
-            $data->currency,
-            $data->created_at,
-            $data->updated_at
-        );
+        return new Client($client);
     }
 
     /**
@@ -132,18 +114,9 @@ class ClientsApi
             ]),
         ]);
 
-        $data = json_decode($response->getBody());
+        $client = json_decode($response->getBody());
 
-        return new Client(
-            $data->id,
-            $data->name,
-            $data->is_active,
-            $data->address,
-            $data->statement_key,
-            $data->currency,
-            $data->created_at,
-            $data->updated_at
-        );
+        return new Client($client);
     }
 
     /**

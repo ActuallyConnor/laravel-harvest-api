@@ -23,7 +23,7 @@ class Clients
     public function __construct($data)
     {
         foreach ($data->clients as $client) {
-            $this->clients[] = new Client($client->id, $client->name, $client->is_active, $client->address, $client->statement_key, $client->currency, $client->created_at, $client->updated_at);
+            $this->clients[] = new Client($client);
         }
 
         $this->per_page = $data->per_page;

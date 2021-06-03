@@ -5,7 +5,6 @@ namespace Actuallyconnor\LaravelHarvestApi\Harvest\Invoices;
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Client;
 
 /**
- * TODO: add tests and fill out the rest of this object
  * Class Invoice
  * @package Actuallyconnor\LaravelHarvestApi\Harvest\Invoices
  */
@@ -44,6 +43,48 @@ class Invoice
     private int $recurring_invoice_id;
     private string $created_at;
     private string $updated_at;
+
+    /**
+     * Invoice constructor.
+     * TODO: fix this such that values can be nullable
+     * @param  object  $invoice
+     */
+    public function __construct(object $invoice)
+    {
+        $this->id                   = $invoice->id;
+        $this->client               = new Client($invoice->client);
+        $this->line_items           = $invoice->line_items;
+        $this->estimate             = $invoice->estimate;
+        $this->retainer             = $invoice->retainer;
+        $this->creator              = $invoice->creator;
+        $this->client_key           = $invoice->client_key;
+        $this->number               = $invoice->number;
+        $this->purchase_order       = $invoice->purchase_order;
+        $this->amount               = $invoice->amount;
+        $this->due_amount           = $invoice->due_amount;
+        $this->tax                  = $invoice->tax;
+        $this->tax_amount           = $invoice->tax_amount;
+        $this->tax_2                = $invoice->tax_2;
+        $this->tax_2_amount         = $invoice->tax_2_amount;
+        $this->discount             = $invoice->discount;
+        $this->discount_amount      = $invoice->discount_amount;
+        $this->subject              = $invoice->subject;
+        $this->notes                = $invoice->notes;
+        $this->currency             = $invoice->currency;
+        $this->state                = $invoice->state;
+        $this->period_start         = $invoice->period_start;
+        $this->period_end           = $invoice->period_end;
+        $this->issue_date           = $invoice->issue_date;
+        $this->due_date             = $invoice->due_date;
+        $this->payment_term         = $invoice->payment_term;
+        $this->sent_at              = $invoice->sent_at;
+        $this->paid_at              = $invoice->paid_at;
+        $this->paid_date            = $invoice->paid_date;
+        $this->closed_at            = $invoice->closed_at;
+        $this->recurring_invoice_id = $invoice->recurring_invoice_id;
+        $this->created_at           = $invoice->created_at;
+        $this->updated_at           = $invoice->updated_at;
+    }
 
     /**
      * @return int
