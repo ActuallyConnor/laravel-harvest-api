@@ -18,21 +18,21 @@ class Clients
     /**
      * Clients constructor.
      *
-     * @param object $data
+     * @param object $clients
      */
-    public function __construct($data)
+    public function __construct($clients)
     {
-        foreach ($data->clients as $client) {
+        foreach ($clients->clients as $client) {
             $this->clients[] = new Client($client);
         }
 
-        $this->per_page = $data->per_page;
-        $this->total_pages = $data->total_pages;
-        $this->total_entries = $data->total_entries;
-        $this->next_page = $data->next_page;
-        $this->previous_page = $data->previous_page;
-        $this->page = $data->page;
-        $this->links = $data->links;
+        $this->per_page = $clients->per_page;
+        $this->total_pages = $clients->total_pages;
+        $this->total_entries = $clients->total_entries;
+        $this->next_page = $clients->next_page;
+        $this->previous_page = $clients->previous_page;
+        $this->page = $clients->page;
+        $this->links = $clients->links;
     }
 
     /**

@@ -23,6 +23,9 @@ Route::delete('harvest/clients/{client_id}', function ($client_id) {
 });
 
 // Invoices
+Route::get('harvest/invoices', function (Request $request) {
+    return (new MockHarvestInvoicesController())->getInvoices($request);
+});
 Route::get('harvest/invoices/{invoice_id}', function (Request $request, $invoice_id) {
     return (new MockHarvestInvoicesController())->getInvoice($invoice_id);
 });

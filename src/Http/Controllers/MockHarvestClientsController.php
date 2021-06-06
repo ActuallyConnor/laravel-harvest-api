@@ -16,10 +16,10 @@ class MockHarvestClientsController extends Controller
     public function getClients(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'is_active' => 'bool|nullable',
+            'is_active'     => 'bool|nullable',
             'updated_since' => 'string|nullable',
-            'page' => 'int|nullable',
-            'per_page' => 'int|nullable',
+            'page'          => 'int|nullable',
+            'per_page'      => 'int|nullable',
         ]);
 
         if ($validator->fails()) {
@@ -27,39 +27,39 @@ class MockHarvestClientsController extends Controller
         }
 
         $data = [
-            "clients" => [
+            "clients"       => [
                 (object) [
-                    "id" => 5735776,
-                    "name" => "123 Industries",
-                    "is_active" => true,
-                    "address" => "123 Main St.\r\nAnytown, LA 71223",
+                    "id"            => 5735776,
+                    "name"          => "123 Industries",
+                    "is_active"     => true,
+                    "address"       => "123 Main St.\r\nAnytown, LA 71223",
                     "statement_key" => 1234567890987654321,
-                    "currency" => "EUR",
-                    "created_at" => "2017-06-26T21 => 02 => 12Z",
-                    "updated_at" => "2017-06-26T21 => 34 => 11Z",
+                    "currency"      => "EUR",
+                    "created_at"    => "2017-06-26T21 => 02 => 12Z",
+                    "updated_at"    => "2017-06-26T21 => 34 => 11Z",
                 ],
                 (object) [
-                    "id" => 5735774,
-                    "name" => "ABC Corp",
-                    "is_active" => true,
-                    "address" => "456 Main St.\r\nAnytown, CT 06467",
+                    "id"            => 5735774,
+                    "name"          => "ABC Corp",
+                    "is_active"     => true,
+                    "address"       => "456 Main St.\r\nAnytown, CT 06467",
                     "statement_key" => 1234567890987654321,
-                    "currency" => "USD",
-                    "created_at" => "2017-06-26T21 => 01 => 52Z",
-                    "updated_at" => "2017-06-26T21 => 27 => 07Z",
+                    "currency"      => "USD",
+                    "created_at"    => "2017-06-26T21 => 01 => 52Z",
+                    "updated_at"    => "2017-06-26T21 => 27 => 07Z",
                 ],
             ],
-            "per_page" => 100,
-            "total_pages" => 1,
+            "per_page"      => 100,
+            "total_pages"   => 1,
             "total_entries" => 2,
-            "next_page" => null,
+            "next_page"     => null,
             "previous_page" => null,
-            "page" => 1,
-            "links" => (object) [
-                "first" => "https://api.harvestapp.com/v2/clients?page=1&per_page=100",
-                "next" => null,
+            "page"          => 1,
+            "links"         => (object) [
+                "first"    => "https://api.harvestapp.com/v2/clients?page=1&per_page=100",
+                "next"     => null,
                 "previous" => null,
-                "last" => "https://api.harvestapp.com/v2/clients?page=1&per_page=100",
+                "last"     => "https://api.harvestapp.com/v2/clients?page=1&per_page=100",
             ],
         ];
 
@@ -74,14 +74,14 @@ class MockHarvestClientsController extends Controller
     public function getClient($clientId)
     {
         $data = (object) [
-            "id" => 5735776,
-            "name" => "123 Industries",
-            "is_active" => true,
-            "address" => "123 Main St.\r\nAnytown, LA 71223",
+            "id"            => 5735776,
+            "name"          => "123 Industries",
+            "is_active"     => true,
+            "address"       => "123 Main St.\r\nAnytown, LA 71223",
             "statement_key" => 1234567890987654321,
-            "created_at" => "2017-06-26T21:02:12Z",
-            "updated_at" => "2017-06-26T21:34:11Z",
-            "currency" => "EUR",
+            "created_at"    => "2017-06-26T21:02:12Z",
+            "updated_at"    => "2017-06-26T21:34:11Z",
+            "currency"      => "EUR",
         ];
 
         return response(json_encode($data));
@@ -96,10 +96,10 @@ class MockHarvestClientsController extends Controller
     public function postClient(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name'      => 'required|string',
             'is_active' => 'bool|nullable',
-            'address' => 'string|nullable',
-            'currency' => 'string|nullable',
+            'address'   => 'string|nullable',
+            'currency'  => 'string|nullable',
         ]);
 
         if ($validator->fails()) {
@@ -109,14 +109,14 @@ class MockHarvestClientsController extends Controller
         $validated = $validator->validated();
 
         $data = (object) [
-            "id" => 5737336,
-            "name" => $validated['name'],
-            "is_active" => ! empty($validated['is_active']) ? $validated['is_active'] : null,
-            "address" => ! empty($validated['address']) ? $validated['address'] : null,
+            "id"            => 5737336,
+            "name"          => $validated[ 'name' ],
+            "is_active"     => ! empty($validated[ 'is_active' ]) ? $validated[ 'is_active' ] : null,
+            "address"       => ! empty($validated[ 'address' ]) ? $validated[ 'address' ] : null,
             "statement_key" => 1234567890987654321,
-            "created_at" => "2017-06-26T21=>39=>35Z",
-            "updated_at" => "2017-06-26T21=>39=>35Z",
-            "currency" => ! empty($validated['currency']) ? $validated['currency'] : null,
+            "created_at"    => "2017-06-26T21=>39=>35Z",
+            "updated_at"    => "2017-06-26T21=>39=>35Z",
+            "currency"      => ! empty($validated[ 'currency' ]) ? $validated[ 'currency' ] : null,
         ];
 
         return response(json_encode($data), 201);
@@ -131,10 +131,10 @@ class MockHarvestClientsController extends Controller
     public function updateClient(Request $request, $clientId)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'string|nullable',
+            'name'      => 'string|nullable',
             'is_active' => 'bool|nullable',
-            'address' => 'string|nullable',
-            'currency' => 'string|nullable',
+            'address'   => 'string|nullable',
+            'currency'  => 'string|nullable',
         ]);
 
         if ($validator->fails()) {
@@ -144,14 +144,14 @@ class MockHarvestClientsController extends Controller
         $validated = $validator->validated();
 
         $data = (object) [
-            "id" => 5737336,
-            "name" => ! empty($validated['name']) ? $validated['name'] : "Your New Client",
-            "is_active" => ! empty($validated['is_active']) ? $validated['is_active'] : false,
-            "address" => ! empty($validated['address']) ? $validated['address'] : null,
+            "id"            => 5737336,
+            "name"          => ! empty($validated[ 'name' ]) ? $validated[ 'name' ] : "Your New Client",
+            "is_active"     => ! empty($validated[ 'is_active' ]) ? $validated[ 'is_active' ] : false,
+            "address"       => ! empty($validated[ 'address' ]) ? $validated[ 'address' ] : null,
             "statement_key" => 1234567890987654321,
-            "created_at" => "2017-06-26T21=>39=>35Z",
-            "updated_at" => "2017-06-26T21=>39=>35Z",
-            "currency" => ! empty($validated['currency']) ? $validated['currency'] : 'EUR',
+            "created_at"    => "2017-06-26T21=>39=>35Z",
+            "updated_at"    => "2017-06-26T21=>39=>35Z",
+            "currency"      => ! empty($validated[ 'currency' ]) ? $validated[ 'currency' ] : 'EUR',
         ];
 
         return response(json_encode($data));
