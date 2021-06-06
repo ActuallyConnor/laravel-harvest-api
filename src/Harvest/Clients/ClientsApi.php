@@ -25,8 +25,11 @@ class ClientsApi
     }
 
     /**
+     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created
+     * clients appearing first.
+     *
      * @param $is_active bool Pass true to only return active clients and false to return inactive clients.
-     * @param $updated_since string Only return clients that have been updated since the given date and time.
+     * @param $updated_since string Only return clients that have been updated since the given date and time. Y-m-d
      * @param $page int The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @param $per_page int The number of records to return per page. Can range between 1 and 100. (Default: 100)
      *
@@ -37,7 +40,7 @@ class ClientsApi
     {
         $response = $this->client->get($this->uri, [
             'is_active'     => $is_active,
-            'updated_since' => date('Y-m-d\TH:i:s\Z', strtotime($updated_since)), // 2017-06-26T21:01:52Z
+            'updated_since' => $updated_since,
             'page'          => $page,
             'per_page'      => $per_page,
         ]);
