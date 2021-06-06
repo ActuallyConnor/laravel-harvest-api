@@ -16,7 +16,7 @@ class InvoiceTest extends TestCase
     {
         parent::setUp();
 
-        $response   = $this->get('/harvest/invoices/123');
+        $response = $this->get('/harvest/invoices/123');
         $this->data = json_decode($response->getContent());
 
         $this->invoice = new Invoice($this->data);

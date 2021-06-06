@@ -51,43 +51,43 @@ class Invoice
      */
     public function __construct(object $invoice)
     {
-        $this->id                   = $invoice->id;
-        $this->client               = new Client($invoice->client);
+        $this->id = $invoice->id;
+        $this->client = new Client($invoice->client);
 
         foreach ($invoice->line_items as $line_item) {
             $this->line_items[] = new InvoiceLineItem($line_item);
         }
 
-        $this->estimate             = $invoice->estimate;
-        $this->retainer             = $invoice->retainer;
-        $this->creator              = $invoice->creator;
-        $this->client_key           = $invoice->client_key;
-        $this->number               = $invoice->number;
-        $this->purchase_order       = $invoice->purchase_order;
-        $this->amount               = $invoice->amount;
-        $this->due_amount           = $invoice->due_amount;
-        $this->tax                  = $invoice->tax;
-        $this->tax_amount           = $invoice->tax_amount;
-        $this->tax2                 = $invoice->tax2;
-        $this->tax2_amount          = $invoice->tax2_amount;
-        $this->discount             = $invoice->discount;
-        $this->discount_amount      = $invoice->discount_amount;
-        $this->subject              = $invoice->subject;
-        $this->notes                = $invoice->notes;
-        $this->currency             = $invoice->currency;
-        $this->state                = $invoice->state;
-        $this->period_start         = $invoice->period_start;
-        $this->period_end           = $invoice->period_end;
-        $this->issue_date           = $invoice->issue_date;
-        $this->due_date             = $invoice->due_date;
-        $this->payment_term         = $invoice->payment_term;
-        $this->sent_at              = $invoice->sent_at;
-        $this->paid_at              = $invoice->paid_at;
-        $this->paid_date            = $invoice->paid_date;
-        $this->closed_at            = $invoice->closed_at;
+        $this->estimate = $invoice->estimate;
+        $this->retainer = $invoice->retainer;
+        $this->creator = $invoice->creator;
+        $this->client_key = $invoice->client_key;
+        $this->number = $invoice->number;
+        $this->purchase_order = $invoice->purchase_order;
+        $this->amount = $invoice->amount;
+        $this->due_amount = $invoice->due_amount;
+        $this->tax = $invoice->tax;
+        $this->tax_amount = $invoice->tax_amount;
+        $this->tax2 = $invoice->tax2;
+        $this->tax2_amount = $invoice->tax2_amount;
+        $this->discount = $invoice->discount;
+        $this->discount_amount = $invoice->discount_amount;
+        $this->subject = $invoice->subject;
+        $this->notes = $invoice->notes;
+        $this->currency = $invoice->currency;
+        $this->state = $invoice->state;
+        $this->period_start = $invoice->period_start;
+        $this->period_end = $invoice->period_end;
+        $this->issue_date = $invoice->issue_date;
+        $this->due_date = $invoice->due_date;
+        $this->payment_term = $invoice->payment_term;
+        $this->sent_at = $invoice->sent_at;
+        $this->paid_at = $invoice->paid_at;
+        $this->paid_date = $invoice->paid_date;
+        $this->closed_at = $invoice->closed_at;
         $this->recurring_invoice_id = $invoice->recurring_invoice_id;
-        $this->created_at           = $invoice->created_at;
-        $this->updated_at           = $invoice->updated_at;
+        $this->created_at = $invoice->created_at;
+        $this->updated_at = $invoice->updated_at;
     }
 
     /**
