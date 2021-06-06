@@ -12,37 +12,37 @@ class Invoice
 {
     private int $id;
     private Client $client;
-    private array $line_items;
+    private $line_items;
     private $estimate; // TODO: eventually will be estimate object
     private $retainer; // TODO: eventually will be retainer object
     private $creator; // TODO: will eventually be creator object
-    private string $client_key;
-    private string $number;
-    private string $purchase_order;
-    private float $amount;
-    private float $due_amount;
-    private float $tax;
-    private float $tax_amount;
-    private float $tax_2;
-    private float $tax_2_amount;
-    private float $discount;
-    private float $discount_amount;
-    private string $subject;
-    private string $notes;
-    private string $currency;
-    private string $state;
-    private string $period_start;
-    private string $period_end;
-    private string $issue_date;
-    private string $due_date;
-    private string $payment_term;
-    private string $sent_at;
-    private string $paid_at;
-    private string $paid_date;
-    private string $closed_at;
-    private int $recurring_invoice_id;
-    private string $created_at;
-    private string $updated_at;
+    private $client_key;
+    private $number;
+    private $purchase_order;
+    private $amount;
+    private $due_amount;
+    private $tax;
+    private $tax_amount;
+    private $tax2;
+    private $tax2_amount;
+    private $discount;
+    private $discount_amount;
+    private $subject;
+    private $notes;
+    private $currency;
+    private $state;
+    private $period_start;
+    private $period_end;
+    private $issue_date;
+    private $due_date;
+    private $payment_term;
+    private $sent_at;
+    private $paid_at;
+    private $paid_date;
+    private $closed_at;
+    private $recurring_invoice_id;
+    private $created_at;
+    private $updated_at;
 
     /**
      * Invoice constructor.
@@ -64,8 +64,8 @@ class Invoice
         $this->due_amount = $invoice->due_amount;
         $this->tax = $invoice->tax;
         $this->tax_amount = $invoice->tax_amount;
-        $this->tax_2 = $invoice->tax_2;
-        $this->tax_2_amount = $invoice->tax_2_amount;
+        $this->tax2 = $invoice->tax2;
+        $this->tax2_amount = $invoice->tax2_amount;
         $this->discount = $invoice->discount;
         $this->discount_amount = $invoice->discount_amount;
         $this->subject = $invoice->subject;
@@ -89,7 +89,7 @@ class Invoice
     /**
      * @return int
      */
-    public function get_id(): int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -97,15 +97,15 @@ class Invoice
     /**
      * @return Client
      */
-    public function get_client(): Client
+    public function getClient(): Client
     {
         return $this->client;
     }
 
     /**
-     * @return array
+     * @return mixed
      */
-    public function get_line_items(): array
+    public function getLineItems()
     {
         return $this->line_items;
     }
@@ -113,7 +113,7 @@ class Invoice
     /**
      * @return mixed
      */
-    public function get_estimate()
+    public function getEstimate()
     {
         return $this->estimate;
     }
@@ -121,7 +121,7 @@ class Invoice
     /**
      * @return mixed
      */
-    public function get_retainer()
+    public function getRetainer()
     {
         return $this->retainer;
     }
@@ -129,223 +129,223 @@ class Invoice
     /**
      * @return mixed
      */
-    public function get_creator()
+    public function getCreator()
     {
         return $this->creator;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_client_key(): string
+    public function getClientKey()
     {
         return $this->client_key;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_number(): string
+    public function getNumber()
     {
         return $this->number;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_purchase_order(): string
+    public function getPurchaseOrder()
     {
         return $this->purchase_order;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_amount(): float
+    public function getAmount()
     {
         return $this->amount;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_due_amount(): float
+    public function getDueAmount()
     {
         return $this->due_amount;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_tax(): float
+    public function getTax()
     {
         return $this->tax;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_tax_amount(): float
+    public function getTaxAmount()
     {
         return $this->tax_amount;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_tax_2(): float
+    public function getTax2()
     {
-        return $this->tax_2;
+        return $this->tax2;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_tax_2_amount(): float
+    public function getTax2Amount()
     {
-        return $this->tax_2_amount;
+        return $this->tax2_amount;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_discount(): float
+    public function getDiscount()
     {
         return $this->discount;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function get_discount_amount(): float
+    public function getDiscountAmount()
     {
         return $this->discount_amount;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_subject(): string
+    public function getSubject()
     {
         return $this->subject;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_notes(): string
+    public function getNotes()
     {
         return $this->notes;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_currency(): string
+    public function getCurrency()
     {
         return $this->currency;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_state(): string
+    public function getState()
     {
         return $this->state;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_period_start(): string
+    public function getPeriodStart()
     {
         return $this->period_start;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_period_end(): string
+    public function getPeriodEnd()
     {
         return $this->period_end;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_issue_date(): string
+    public function getIssueDate()
     {
         return $this->issue_date;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_due_date(): string
+    public function getDueDate()
     {
         return $this->due_date;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_payment_term(): string
+    public function getPaymentTerm()
     {
         return $this->payment_term;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_sent_at(): string
+    public function getSentAt()
     {
         return $this->sent_at;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_paid_at(): string
+    public function getPaidAt()
     {
         return $this->paid_at;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_paid_date(): string
+    public function getPaidDate()
     {
         return $this->paid_date;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_closed_at(): string
+    public function getClosedAt()
     {
         return $this->closed_at;
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function get_recurring_invoice_id(): int
+    public function getRecurringInvoiceId()
     {
         return $this->recurring_invoice_id;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_created_at(): string
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function get_updated_at(): string
+    public function getUpdatedAt()
     {
         return $this->updated_at;
     }
