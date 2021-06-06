@@ -3,10 +3,8 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Invoices;
 
-
 class InvoiceLineItem
 {
-
     private $id;
     private $project; // object
     private $kind;
@@ -19,15 +17,15 @@ class InvoiceLineItem
 
     public function __construct($line_item)
     {
-        $this->id          = $line_item->id;
-        $this->project     = $line_item->project;
-        $this->kind        = $line_item->kind;
+        $this->id = $line_item->id;
+        $this->project = $line_item->project;
+        $this->kind = $line_item->kind;
         $this->description = $line_item->description;
-        $this->quantity    = $line_item->quantity;
-        $this->unit_price  = $line_item->unit_price;
-        $this->amount      = $line_item->amount;
-        $this->taxed       = $line_item->taxed;
-        $this->taxed2      = $line_item->taxed2;
+        $this->quantity = $line_item->quantity;
+        $this->unit_price = $line_item->unit_price;
+        $this->amount = $line_item->amount;
+        $this->taxed = $line_item->taxed;
+        $this->taxed2 = $line_item->taxed2;
     }
 
     /**
@@ -101,5 +99,4 @@ class InvoiceLineItem
     {
         return $this->taxed2;
     }
-
 }

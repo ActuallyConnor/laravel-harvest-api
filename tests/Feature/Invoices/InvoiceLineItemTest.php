@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class InvoiceLineItemTest extends TestCase
 {
-
     private InvoiceLineItem $invoiceLineItem;
     private object $lineItem;
 
@@ -15,8 +14,8 @@ class InvoiceLineItemTest extends TestCase
     {
         parent::setUp();
 
-        $response       = $this->get('/harvest/invoices/123');
-        $data           = json_decode($response->getContent());
+        $response = $this->get('/harvest/invoices/123');
+        $data = json_decode($response->getContent());
         $this->lineItem = $data->line_items[ 0 ];
 
         $this->invoiceLineItem = new InvoiceLineItem($this->lineItem);
