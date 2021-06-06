@@ -43,14 +43,14 @@ class InvoicesApi
     public function listAllInvoices($client_id, $project_id, $updated_since, $from, $to, $state, $page, $per_page)
     {
         $response = $this->client->get($this->uri, [
-            'client_id'     => $client_id,
-            'project_id'    => $project_id,
+            'client_id' => $client_id,
+            'project_id' => $project_id,
             'updated_since' => $updated_since,
-            'from'          => $from,
-            'to'            => $to,
-            'state'         => $state,
-            'page'          => $page,
-            'per_page'      => $per_page
+            'from' => $from,
+            'to' => $to,
+            'state' => $state,
+            'page' => $page,
+            'per_page' => $per_page,
         ]);
 
         $data = json_decode($response->getBody());

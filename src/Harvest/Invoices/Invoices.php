@@ -3,7 +3,6 @@
 
 namespace Actuallyconnor\LaravelHarvestApi\Harvest\Invoices;
 
-
 class Invoices
 {
     private array $invoices = [];
@@ -22,13 +21,13 @@ class Invoices
             $this->invoices[] = new Invoice($invoice);
         }
 
-        $this->per_page      = $invoices->per_page;
-        $this->total_pages   = $invoices->total_pages;
+        $this->per_page = $invoices->per_page;
+        $this->total_pages = $invoices->total_pages;
         $this->total_entries = $invoices->total_entries;
-        $this->next_page     = $invoices->next_page;
+        $this->next_page = $invoices->next_page;
         $this->previous_page = $invoices->previous_page;
-        $this->page          = $invoices->page;
-        $this->links         = $invoices->links;
+        $this->page = $invoices->page;
+        $this->links = $invoices->links;
     }
 
     /**

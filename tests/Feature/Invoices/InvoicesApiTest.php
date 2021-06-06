@@ -26,17 +26,25 @@ class InvoicesApiTest extends TestCase
 
     public function test_get_invoices()
     {
-        $invoices = $this->invoicesApi->listAllInvoices(123, 123, date('Y-m-d'), date('Y-m-d'), date('Y-m-d'), 'draft',
-            1, 100);
+        $invoices = $this->invoicesApi->listAllInvoices(
+            123,
+            123,
+            date('Y-m-d'),
+            date('Y-m-d'),
+            date('Y-m-d'),
+            'draft',
+            1,
+            100
+        );
         $this->assertInstanceOf(Invoices::class, $invoices);
 
         $invoice = $invoices->getInvoices()[ 0 ];
 
         $response = $this->get('/harvest/invoices', []);
-        $data     = json_decode($response->getContent());
+        $data = json_decode($response->getContent());
 
         $mockInvoices = $data->invoices;
-        $mockInvoice  = $mockInvoices[ 0 ];
+        $mockInvoice = $mockInvoices[ 0 ];
 
         $this->test_mock_invoice_against_real($mockInvoice, $invoice);
     }

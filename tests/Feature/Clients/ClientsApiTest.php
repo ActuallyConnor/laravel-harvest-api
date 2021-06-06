@@ -16,7 +16,7 @@ class ClientsApiTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->clientsApi  = new ClientsApi();
+        $this->clientsApi = new ClientsApi();
         $this->harvestMock = new MockHarvestClientsController();
     }
 
@@ -33,10 +33,10 @@ class ClientsApiTest extends TestCase
         $client = $clients->getClients()[ 0 ];
 
         $response = $this->get('/harvest/clients', []);
-        $data     = json_decode($response->getContent());
+        $data = json_decode($response->getContent());
 
         $mockClients = $data->clients;
-        $mockClient  = $mockClients[ 0 ];
+        $mockClient = $mockClients[ 0 ];
 
         $this->test_mock_client_against_real($mockClient, $client);
     }
@@ -49,10 +49,10 @@ class ClientsApiTest extends TestCase
         $client = $clients->getClients()[ 0 ];
 
         $response = $this->get('/harvest/clients', []);
-        $data     = json_decode($response->getContent());
+        $data = json_decode($response->getContent());
 
         $mockClients = $data->clients;
-        $mockClient  = $mockClients[ 0 ];
+        $mockClient = $mockClients[ 0 ];
 
         $this->test_mock_client_against_real($mockClient, $client);
     }
@@ -62,7 +62,7 @@ class ClientsApiTest extends TestCase
         $client = $this->clientsApi->retrieveClient(123);
         $this->assertInstanceOf(Client::class, $client);
 
-        $response   = $this->get('/harvest/clients/123');
+        $response = $this->get('/harvest/clients/123');
         $mockClient = json_decode($response->getContent());
 
         $this->test_mock_client_against_real($mockClient, $client);
@@ -77,10 +77,10 @@ class ClientsApiTest extends TestCase
         $this->assertInstanceOf(Client::class, $client);
 
         $response = $this->post('/harvest/clients', [
-            'name'      => $name,
+            'name' => $name,
             'is_active' => true,
-            'address'   => '123 Home St',
-            'currency'  => 'USD',
+            'address' => '123 Home St',
+            'currency' => 'USD',
         ]);
 
         $mockClient = json_decode($response->getContent());
@@ -105,10 +105,10 @@ class ClientsApiTest extends TestCase
         $this->assertInstanceOf(Client::class, $client);
 
         $response = $this->patch('/harvest/clients/123', [
-            'name'      => $name,
+            'name' => $name,
             'is_active' => true,
-            'address'   => '123 Home St',
-            'currency'  => 'USD',
+            'address' => '123 Home St',
+            'currency' => 'USD',
         ]);
 
         $mockClient = json_decode($response->getContent());
