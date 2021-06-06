@@ -4,6 +4,7 @@ namespace Actuallyconnor\LaravelHarvestApi\Tests\Feature\Invoices;
 
 use Actuallyconnor\LaravelHarvestApi\Harvest\Clients\Client;
 use Actuallyconnor\LaravelHarvestApi\Harvest\Invoices\Invoice;
+use Actuallyconnor\LaravelHarvestApi\Harvest\Invoices\InvoiceLineItem;
 use Tests\TestCase;
 
 class InvoiceTest extends TestCase
@@ -15,7 +16,7 @@ class InvoiceTest extends TestCase
     {
         parent::setUp();
 
-        $response = $this->get('/harvest/invoices/123');
+        $response   = $this->get('/harvest/invoices/123');
         $this->data = json_decode($response->getContent());
 
         $this->invoice = new Invoice($this->data);
@@ -38,7 +39,7 @@ class InvoiceTest extends TestCase
 
     public function test_get_line_items()
     {
-        $this->assertEquals($this->data->line_items, $this->invoice->getLineItems());
+        $this->assertInstanceOf(InvoiceLineItem::class, $this->invoice->getLineItems()[ 0 ]);
     }
 
     public function test_get_estimate()
