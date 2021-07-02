@@ -39,10 +39,10 @@ class ClientsApi
     public function listAllClients($is_active, $updated_since, $page, $per_page)
     {
         $response = $this->client->get($this->uri, [
-            'is_active'     => $is_active,
+            'is_active' => $is_active,
             'updated_since' => $updated_since,
-            'page'          => $page,
-            'per_page'      => $per_page,
+            'page' => $page,
+            'per_page' => $per_page,
         ]);
 
         $data = json_decode($response->getBody());
@@ -81,10 +81,10 @@ class ClientsApi
     {
         $response = $this->client->post($this->uri, [
             'body' => json_encode([
-                'name'      => $name,
+                'name' => $name,
                 'is_active' => $is_active,
-                'address'   => $address,
-                'currency'  => $currency,
+                'address' => $address,
+                'currency' => $currency,
             ]),
         ]);
 
@@ -110,10 +110,10 @@ class ClientsApi
     {
         $response = $this->client->patch(sprintf("%s/%s", $this->uri, $clientId), [
             'body' => json_encode([
-                'name'      => $name,
+                'name' => $name,
                 'is_active' => $is_active,
-                'address'   => $address,
-                'currency'  => $currency,
+                'address' => $address,
+                'currency' => $currency,
             ]),
         ]);
 
