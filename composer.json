@@ -38,7 +38,7 @@
     },
     "scripts": {
         "test": [
-            "@php ./vendor/bin/phpunit"
+            "@php ./vendor/bin/phpunit --configuration phpunit.xml"
         ],
         "post-autoload-dump": [
             "@php ./vendor/bin/testbench package:discover --ansi"
